@@ -1,0 +1,84 @@
+# Configurazione Bot Monitoraggio Terreni Edificabili (Baugrundstücke)
+# Schöneck, Nidderau, e circondario Francoforte sul Meno
+
+locations:
+  primary:
+    - name: "Schöneck"
+      subdistricts: ["Kilianstädten", "Büdesheim", "Oberdorfelden"]
+      train_lines: ["RB34"]
+      postal_codes: ["61137"]
+      amtsgericht: "Hanau"
+    - name: "Nidderau"
+      subdistricts: ["Heldenbergen", "Windecken", "Ostheim", "Erbstadt", "Eichen"]
+      train_lines: ["RB34", "RB49"]
+      postal_codes: ["61130"]
+      amtsgericht: "Hanau"
+  surrounding:
+    - name: "Bad Vilbel"
+      train_lines: ["S6", "RB34"]
+      postal_codes: ["61118"]
+      amtsgericht: "Frankfurt am Main"
+    - name: "Karben"
+      train_lines: ["S6"]
+      postal_codes: ["61184"]
+      amtsgericht: "Friedberg"
+    - name: "Maintal"
+      train_lines: ["RB58", "RE54"]
+      postal_codes: ["63477"]
+      amtsgericht: "Hanau"
+    - name: "Hanau"
+      train_lines: ["S8", "S9", "RB58", "RE50"]
+      postal_codes: ["63450", "63452", "63454", "63456", "63457"]
+      amtsgericht: "Hanau"
+    - name: "Frankfurt am Main"
+      train_lines: ["S-Bahn", "U-Bahn"]
+      postal_codes: ["60311", "60313", "60388", "60389"]
+      amtsgericht: "Frankfurt am Main"
+
+keywords:
+  land:
+    - "Baugrundstück"
+    - "Baugrund"
+    - "Grundstück"
+    - "Wohnbaufläche"
+    - "Bauland"
+    - "Bauerwartungsland"
+  deep_search_infrastructure:
+    # Parole chiave per lavori stradali, tubi, fognature, nuove lottizzazioni
+    - "Erschließung"
+    - "Erschließungsgebiet"
+    - "Neubaugebiet"
+    - "Kanalbau"
+    - "Tiefbau"
+    - "Rohrleitungsbau"
+    - "Wasserleitung"
+    - "Bebauungsplan"
+    - "B-Plan"
+    - "Bauleitplanung"
+    - "Offenlage"
+    - "Umlegung"
+
+notifications:
+  # Metodo primario: WhatsApp tramite CallMeBot (Gratuito, richiede 1 minuto di attivazione)
+  whatsapp:
+    enabled: true
+    provider: "callmebot" # Opzioni: "callmebot" o "twilio"
+    # Per CallMeBot: invia un messaggio WhatsApp con scritto "I allow callmebot to send me messages"
+    # al numero +34 941 12 00 20 e riceverai il tuo apikey personale.
+    callmebot:
+      phone_number: "+49XXXXXXXXXX" # Con prefisso internazionale (es. +491701234567 o +393401234567)
+      api_key: "YOUR_CALLMEBOT_API_KEY"
+    twilio:
+      account_sid: ""
+      auth_token: ""
+      from_number: "whatsapp:+14155238886"
+      to_number: "whatsapp:+49XXXXXXXXXX"
+
+  # Metodo alternativo / backup: Telegram
+  telegram:
+    enabled: false
+    bot_token: "YOUR_TELEGRAM_BOT_TOKEN"
+    chat_id: "YOUR_TELEGRAM_CHAT_ID"
+
+scheduler:
+  interval_minutes: 60 # Controllo ogni 60 minuti

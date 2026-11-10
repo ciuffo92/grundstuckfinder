@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Database locale SQLite
+*.db
+*.sqlite3
+
+# Credenziali personali e numeri di telefono
+# NOTA: mantieni una copia di backup di settings.yaml se lo escludi
+# config/settings.yaml
+
+# IDE / Editor
+.vscode/
+.idea/
+.DS_Store
